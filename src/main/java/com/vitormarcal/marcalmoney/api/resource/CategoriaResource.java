@@ -12,7 +12,7 @@ import com.vitormarcal.marcalmoney.api.repository.CategoriaRepository;
 
 @RestController
 @RequestMapping("/categorias")
-public class CateegoriaResource {
+public class CategoriaResource {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
