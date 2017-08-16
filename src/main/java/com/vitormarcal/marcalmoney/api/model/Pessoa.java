@@ -1,11 +1,11 @@
 package com.vitormarcal.marcalmoney.api.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "pessoa")
 public class Pessoa {
 
     @Id
@@ -18,6 +18,9 @@ public class Pessoa {
 
     @NotNull
     private boolean ativo;
+
+    @Embedded
+    private Endereco endereco;
 
     public String getNome() {
         return nome;
