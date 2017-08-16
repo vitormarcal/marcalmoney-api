@@ -2,13 +2,13 @@ CREATE TABLE pessoa (
 	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50) NOT NULL,
 	ativo TINYINT(1)  NOT NULL,
-	logradouro VARCHAR(100)  NOT NULL,
-  numero  VARCHAR(4)  NOT NULL,
-  complemento VARCHAR(50)  NOT NULL,
-  bairro VARCHAR(50)  NOT NULL,
-  cep VARCHAR(11)  NOT NULL,
-  cidade VARCHAR(50)  NOT NULL,
-  estado VARCHAR(50)  NOT NULL
+	logradouro VARCHAR(100) NULL,
+  numero  VARCHAR(4) NULL,
+  complemento VARCHAR(50) NULL,
+  bairro VARCHAR(50) NULL,
+  cep VARCHAR(11) NULL,
+  cidade VARCHAR(50) NULL,
+  estado VARCHAR(50)  NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO pessoa (nome, ativo, numero, cep, cidade, estado, logradouro, bairro, complemento)
@@ -22,5 +22,8 @@ INSERT INTO pessoa (nome, ativo, numero, cep, cidade, estado, logradouro, bairro
 
 INSERT INTO pessoa (nome, ativo, numero, cep, cidade, estado, logradouro, bairro, complemento)
   values ('Maria', 1, '36', '7226003', 'brasilia', 'df', 'nao sei','asa norte', '12');
+
+INSERT INTO pessoa (nome, ativo)
+values ('Jose das Dores', 1);
 
 
