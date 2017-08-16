@@ -39,6 +39,22 @@ public class Pessoa {
         this.ativo = ativo;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
