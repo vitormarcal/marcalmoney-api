@@ -1,16 +1,30 @@
 package com.vitormarcal.marcalmoney.api.model;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Endereco {
 
+    @Size(max = 50)
     private String logradouro;
+
+    @Size(max = 4)
     private String numero;
+
+    @Size(max = 50)
     private String complemento;
+
+    @Size(max = 50)
     private String bairro;
+
+    @Size(max = 8)
     private String cep;
+
+    @Size(max = 50)
     private String cidade;
+
+    @Size(max = 50)
     private String estado;
 
     public String getNumero() {
