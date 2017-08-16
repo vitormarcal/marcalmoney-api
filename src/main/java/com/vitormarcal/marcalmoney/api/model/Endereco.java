@@ -6,25 +6,25 @@ import javax.validation.constraints.Size;
 @Embeddable
 public class Endereco {
 
-    @Size(max = 50)
+    @Size(max = 30)
     private String logradouro;
 
-    @Size(max = 4)
+    @Size(max = 30)
     private String numero;
 
-    @Size(max = 50)
+    @Size(max = 30)
     private String complemento;
 
-    @Size(max = 50)
+    @Size(max = 30)
     private String bairro;
 
     @Size(max = 8)
     private String cep;
 
-    @Size(max = 50)
+    @Size(max = 30)
     private String cidade;
 
-    @Size(max = 50)
+    @Size(max = 30)
     private String estado;
 
     public String getNumero() {
