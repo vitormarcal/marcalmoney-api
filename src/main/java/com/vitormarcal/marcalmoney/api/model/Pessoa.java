@@ -58,15 +58,15 @@ public class Pessoa {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Pessoa)) return false;
 
         Pessoa pessoa = (Pessoa) o;
 
-        return codigo.equals(pessoa.codigo);
+        return codigo != null ? codigo.equals(pessoa.codigo) : pessoa.codigo == null;
     }
 
     @Override
     public int hashCode() {
-        return codigo.hashCode();
+        return codigo != null ? codigo.hashCode() : 0;
     }
 }
