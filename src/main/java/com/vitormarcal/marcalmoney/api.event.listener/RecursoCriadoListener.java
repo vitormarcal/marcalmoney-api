@@ -1,7 +1,6 @@
 package com.vitormarcal.marcalmoney.api.event.listener;
 
 import com.vitormarcal.marcalmoney.api.event.RecursoCriadoEvent;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
