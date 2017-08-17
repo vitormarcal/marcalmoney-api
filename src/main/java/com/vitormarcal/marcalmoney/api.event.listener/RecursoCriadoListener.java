@@ -1,6 +1,7 @@
 package com.vitormarcal.marcalmoney.api.event.listener;
 
 import com.vitormarcal.marcalmoney.api.event.RecursoCriadoEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 
 @Component
-public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoEvent{
+public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoEvent>{
 
     @Override
     public void onApplicationEvent(RecursoCriadoEvent recursoCriadoEvent) {
@@ -16,7 +17,6 @@ public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoE
         Long codigo = recursoCriadoEvent.getCodigo();
 
         adicionarHeaderLocation(response, codigo);
-
     }
 
     private void adicionarHeaderLocation(HttpServletResponse response, Long codigo) {
