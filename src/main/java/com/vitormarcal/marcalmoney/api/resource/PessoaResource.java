@@ -3,6 +3,7 @@ package com.vitormarcal.marcalmoney.api.resource;
 import com.vitormarcal.marcalmoney.api.event.RecursoCriadoEvent;
 import com.vitormarcal.marcalmoney.api.model.Pessoa;
 import com.vitormarcal.marcalmoney.api.repository.PessoaRepository;
+import com.vitormarcal.marcalmoney.api.service.PessoaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -23,6 +24,9 @@ public class PessoaResource {
 
 	@Autowired
 	private PessoaRepository pessoaRepository;
+
+	@Autowired
+	private PessoaService pessoaService;
 
 	@Autowired
 	private ApplicationEventPublisher publisher;
@@ -53,12 +57,7 @@ public class PessoaResource {
 
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
-		Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
-		if (pessoaSalva == null) {
-			throw new EmptyResultDataAccessException(1);
-		}
-		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
-		pessoaRepository.save(pessoaSalva);
+		Pessoa pessoaSalva = pessoaService.atualizar(codigo, pessoa);
 		return ResponseEntity.ok(pessoaSalva);
 	}
 }
