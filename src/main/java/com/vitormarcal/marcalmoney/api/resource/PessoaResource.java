@@ -6,6 +6,7 @@ import com.vitormarcal.marcalmoney.api.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +54,9 @@ public class PessoaResource {
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
 		Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
+		if (pessoaSalva == null) {
+			throw new EmptyResultDataAccessException(1);
+		}
 		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
 		pessoaRepository.save(pessoaSalva);
 		return ResponseEntity.ok(pessoaSalva);
