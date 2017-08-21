@@ -3,6 +3,7 @@ package com.vitormarcal.marcalmoney.api.resource;
 import com.vitormarcal.marcalmoney.api.event.RecursoCriadoEvent;
 import com.vitormarcal.marcalmoney.api.model.Pessoa;
 import com.vitormarcal.marcalmoney.api.repository.PessoaRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -47,5 +48,13 @@ public class PessoaResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long codigo) {
 		pessoaRepository.delete(codigo);
+	}
+
+	@PutMapping("/{codigo}")
+	public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
+		Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
+		BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
+		pessoaRepository.save(pessoaSalva);
+		return ResponseEntity.ok(pessoaSalva);
 	}
 }
