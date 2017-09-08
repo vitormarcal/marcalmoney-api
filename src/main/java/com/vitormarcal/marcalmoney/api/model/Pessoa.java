@@ -1,5 +1,7 @@
 package com.vitormarcal.marcalmoney.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,15 +32,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public boolean isAtivo() {
-        return ativo;
-
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
@@ -54,6 +47,22 @@ public class Pessoa {
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    @JsonIgnore
+    @Transient
+    public boolean isInativo(){
+        return !this.ativo;
+    }
+
 
     @Override
     public boolean equals(Object o) {
