@@ -4,6 +4,7 @@ import com.vitormarcal.marcalmoney.api.event.RecursoCriadoEvent;
 import com.vitormarcal.marcalmoney.api.exceptionhandler.MarcalmoneyExcecptionHandler;
 import com.vitormarcal.marcalmoney.api.model.Lancamento;
 import com.vitormarcal.marcalmoney.api.repository.LancamentoRepository;
+import com.vitormarcal.marcalmoney.api.repository.filter.LancamentoFilter;
 import com.vitormarcal.marcalmoney.api.service.LancamentoService;
 import com.vitormarcal.marcalmoney.api.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class LancamentoResource {
     private MessageSource messageSource;
 
     @GetMapping
-    public List<Lancamento> listar() {
-        return lancamentoRepository.findAll();
+    public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
+        return lancamentoRepository.filtrar(lancamentoFilter);
     }
 
     @GetMapping("{id}")
